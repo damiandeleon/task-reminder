@@ -21,20 +21,25 @@ const Tasks = () => {
       notes: "Buy an Apple gift card",
     },
   ];
-
   let count = tasks.length;
+  
 
   const [people, setPeople] = useState(tasks);
+  const [counter, setCounter] = useState(count);
   const removePeople = () => {
     setPeople([]);
+    setCounter(0);
   };
   const removePerson = (identifier) => {
     const newList = people.filter((person)=> person.id !== identifier)
     setPeople(newList);
+    setCounter(counter - 1);
   };
+
+
   return (
     <>
-      <h1>There are {count} tasks to complete. </h1>
+      <h1>There are {counter} tasks to complete. </h1>
       <section>
         {people.map((person) => {
           const { id, name, date, notes } = person;
